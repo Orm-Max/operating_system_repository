@@ -96,10 +96,6 @@ vboxuser@Ubuntu:~/os-lab1/demo$ chmod 644 note.txt
    - `/etc` holds the configuration files of the system and the programs.
    - `/home` holds the personal folders of the users (mine is `/home/vboxuser`).
 
-### Interesting output
-
-The `ls -l note.txt` before and after `chmod 600` (see "Ownership and permissions" above). Before it was `-rw-rw-r--`, after it `-rw-------`. The size (24 bytes) and the time (11:29) stayed the same, so `chmod` changes only the information about the file (who may use it), not the content.
-
 ---
 
 ## Part 2. Processes (process management)
@@ -169,10 +165,6 @@ vboxuser@Ubuntu:~/os-lab1$ kill $PID
 
 3. **The `State:` line of the sleeping process:** it says `S (sleeping)`. The `sleep 300` process is just waiting for its timer and does not use the CPU, the OS wakes it up when the time is over. On my idle VM almost all processes are sleeping like this (228 of 229 in `top`).
 
-### Interesting output
-
-`ps -ef | grep sleep` showed two lines: my `sleep 300` (PID 5981) and the `grep` command itself (PID 6006), because the word "sleep" is also in the grep command line. Both have the same parent PID 5057, which is my bash terminal. So every process is created by another process.
-
 ---
 
 ## Part 3. Memory (memory management)
@@ -200,10 +192,6 @@ VmRSS:	    7684 kB
 2. **What is swap and how much is configured?** Swap is a space on the disk that the OS can use like extra memory: when RAM is full, it moves the pages that are not used much to the disk. On my VM swap is `0B`, so no swap is configured.
 
 3. **VmRSS of a bare `sleep`:** `VmRSS` is 7684 kB, about 7.5 MB. It surprised me a bit, because `sleep` does nothing, but I think it still needs its code and the shared libraries (like libc) loaded in RAM. Also, in the `/proc` block of Part 2 the `VmSize` of a similar `sleep` process was 16112 kB, so the virtual size is bigger than the RAM it really uses.
-
-### Interesting output
-
-The `Mem:` line of `free -h`: only 175Mi `free`, but 1.0Gi `available`. At first I thought the VM was almost out of memory, but the rest is cache that the OS can release.
 
 ---
 
@@ -245,10 +233,6 @@ vboxuser@Ubuntu:~/os-lab1$ mount | head
 2. **One entry from `/dev`:** `/dev/cdrom`, which is a link to `sr0`. It stands for the CD/DVD drive. In my VM it is a virtual drive with the VirtualBox Guest Additions disc (it is also visible in `df -h` as `/dev/sr0`).
 
 3. **"Everything is a file":** the OS shows disks, terminals and even information about processes in the same way as normal files, with paths and read/write operations. For example, I read `/proc/6453/status` like a text file, and my disk appears as `/dev/sda2`.
-
-### Interesting output
-
-`lsblk` shows 17 `loop` devices (`loop0` to `loop16`). Each of them is a snap package (like Firefox) that the OS mounts as if it was a separate small disk, even though it is only a file.
 
 ---
 
