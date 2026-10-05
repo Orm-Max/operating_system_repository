@@ -33,7 +33,6 @@ vboxuser@Ubuntu:~/os-lab1$ uptime
 
 The OS sees me as the user `vboxuser`, and the kernel is Linux 7.0.0-34-generic.
 
----
 
 ## Part 1. Files and directories (file management)
 
@@ -96,7 +95,6 @@ vboxuser@Ubuntu:~/os-lab1/demo$ chmod 644 note.txt
    - `/etc` holds the configuration files of the system and the programs.
    - `/home` holds the personal folders of the users (mine is `/home/vboxuser`).
 
----
 
 ## Part 2. Processes (process management)
 
@@ -165,7 +163,6 @@ vboxuser@Ubuntu:~/os-lab1$ kill $PID
 
 3. **The `State:` line of the sleeping process:** it says `S (sleeping)`. The `sleep 300` process is just waiting for its timer and does not use the CPU, the OS wakes it up when the time is over. On my idle VM almost all processes are sleeping like this (228 of 229 in `top`).
 
----
 
 ## Part 3. Memory (memory management)
 
@@ -193,7 +190,6 @@ VmRSS:	    7684 kB
 
 3. **VmRSS of a bare `sleep`:** `VmRSS` is 7684 kB, about 7.5 MB. It surprised me a bit, because `sleep` does nothing, but I think it still needs its code and the shared libraries (like libc) loaded in RAM. Also, in the `/proc` block of Part 2 the `VmSize` of a similar `sleep` process was 16112 kB, so the virtual size is bigger than the RAM it really uses.
 
----
 
 ## Part 4. Devices and storage (I/O management)
 
@@ -234,7 +230,6 @@ vboxuser@Ubuntu:~/os-lab1$ mount | head
 
 3. **"Everything is a file":** the OS shows disks, terminals and even information about processes in the same way as normal files, with paths and read/write operations. For example, I read `/proc/6453/status` like a text file, and my disk appears as `/dev/sda2`.
 
----
 
 ## Conclusion
 
