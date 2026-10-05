@@ -1,11 +1,20 @@
 # Lab 2. Meet the OS You Will Build (xv6)
 
-**Student:** Maxim, group FAF-242
-**Course:** Operating Systems, FCIM / FAF, UTM, 2026-2027
-
-## Goal
-
-To build the teaching OS xv6 from source, boot it, use it as a small Unix system, read part of its source code, and write my first program that runs inside it.
+**MINISTRY OF EDUCATION, CULTURE AND RESEARCH**
+**OF THE REPUBLIC OF MOLDOVA**
+ 
+**Technical University of Moldova**
+**Faculty of Computers, Informatics and Microelectronics**
+**Department of Software Engineering and Automation**
+ 
+ 
+**MAXIM ORMANJI FAF-242**
+ 
+ 
+# Report
+ 
+**Laboratory work**
+**of Operating System**
 
 ## Part 1. Build it and boot it
 
